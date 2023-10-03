@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="البحث">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchUsers()"> <i class="fa fa-search"></i></button>
+        <button class="btn btn-outline-secondary" type="button" (click)="resetSearch()"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+    
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th class="d-none d-md-table-cell">البريد الإلكتروني</th>
+              <th>الشارع</th>
+              <th class="d-none d-md-table-cell">المدينة</th>
+              <th ></th>
+              <th ></th>
+              <th ></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.displayName }}</td>
+            
+              <td class="d-none d-md-table-cell">{{ user.email }}</td>
+              <td>{{ user.address?.street }}</td>
+              <td class="d-none d-md-table-cell">{{ user.address?.city }}</td>
+              <td>
+                
+                  <i [routerLink]="['details', user.id]" class="fa fa-eye" style="font-size: 1.4em; cursor: pointer; color: darkgray;">  </i>     
+
+              </td>
+              <td>
+                
+               
+       
+                <i [routerLink]="['edit', user.id]"class="fa fa-pencil" style="font-size: 1.4em; cursor: pointer; color: darkgray;">  </i>
+    
+      
+            
+            </td>
+            <td>
+                
+               
+  
+              <i (click)="deleteUser(user.id)" class="fa fa-trash" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>
+    
+          
+          </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-12">
+      <app-pagination [pageIndex]="pageIndex" [pageSize]="pageSize" [totalCount]="totalCount" (pageChanged)="onPageChanged($event)"></app-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@media (max-width: 767.98px) { 
+    .stuck-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030; /* optional, in case you need to layer other elements below/above this element */
+    }
+}

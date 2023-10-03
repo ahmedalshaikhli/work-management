@@ -1,0 +1,158 @@
+/* Removed Unused CSS */
+
+.block {
+    margin: 0;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    position: relative;
+    cursor: default;
+    border-radius: .25rem .25rem .25rem;
+    -moz-border-radius: .25rem .25rem .25rem;
+  
+    /* Add the box shadow here */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optional: Adjust the shadow size and color for the hover effect */
+  .block:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .block:after,
+  .block:before {
+    display: table;
+    content: "";
+  }
+  
+  .block:after {
+    clear: both;
+  }
+  
+  a > .block {
+    cursor: pointer;
+  }
+  
+  .block .block-image {
+    transition: all 0.3s linear;
+    position: relative;
+  }
+  
+  .block .block-image img {
+    max-width: 100%;
+  }
+  
+  .product-ribbon {
+    position: absolute;
+    top: 15px;
+  }
+  
+  /* End of Removed Unused CSS */
+  
+  /* Updated CSS with Necessary Classes */
+  
+  .product {
+    position: relative;
+    cursor: default;
+    border-radius: 0.25rem;
+  }
+  
+  .product .block-image {
+    position: relative;
+  }
+  
+  .product .block-image img {
+    max-width: 100%;
+  }
+  
+  .product .block-body {
+    padding: 1rem;
+  }
+  
+  .product .block-body > p {
+    margin-bottom: 0;
+  }
+  
+  .product .block-buttons {
+    padding: 1rem;
+  }
+  
+  .product .block-buttons .row {
+    align-items: center;
+  }
+  
+  .product .block-buttons .col-6.text-start {
+    text-align: start;
+  }
+  
+  .product .block-buttons .col-6.text-end {
+    text-align: end;
+  }
+  
+  .product .btn-icon {
+    background: transparent;
+    border: 0;
+    text-align: center;
+    font-size: 18px;
+    padding: 2px;
+    color: #818a91;
+    cursor: pointer;
+  }
+  
+ /*  .product .btn-icon:hover,
+  .product .btn-icon.active {
+    color: #3452ff;
+  } */
+  
+  .product .btn-block {
+    width: 100%;
+  }
+  
+  .product .btn-primary {
+    background-color: #bf9553;
+    border-color: #bf9553;
+    color: #fff;
+  }
+/*   .z-depth-2-top, .z-depth-2-top--hover:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+} */
+/*   .product .btn-primary:hover {
+    background-color: #3452ff;
+    border-color: #3452ff;
+  } */
+  
+
+
+  .responsive-product-title {
+   
+    justify-content: center;
+    align-items: center;
+    /* Set the desired height for the product title container */
+  }
+  
+  .custom-font-size {
+   /*  padding-left: 10px;
+    padding-right: 10px; */
+     /* Prevent product title from wrapping to multiple lines */
+    overflow: hidden; /* Hide any overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis (...) when text is truncated */
+    font-size: 20px; /* Set a default font size */
+    color: #303030;
+    font-weight: 600; /* Set a nice gray color for the text */
+    text-decoration: none; /* Remove the underline from the link */
+  }
+  /* Adjust font size based on container width */
+  .custom-font-size {
+    font-size: 20px; /* Set a default font size */
+  }
+  
+  @media screen and (max-width: 600px) {
+    .responsive-product-title .custom-font-size {
+      font-size: 18px; /* Set font size for smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .responsive-product-title .custom-font-size {
+      font-size: 16px; /* Set font size for even smaller screens */
+    }
+  }

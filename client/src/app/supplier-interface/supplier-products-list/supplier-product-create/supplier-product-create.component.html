@@ -1,0 +1,235 @@
+<div class="container">
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm.valid && productForm.value)" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">اسم المنتج</label>
+            <input
+            [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
+            required
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            #name="ngModel"
+            [(ngModel)]="product.name"
+          >
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+              <div *ngIf="name.errors.required">
+                اسم المنتج مطلوب
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="price">السعر</label>
+            <input
+            [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched)}"
+            required
+            type="text"
+            class="form-control"
+            id="price"
+            name="price"
+            #price="ngModel"
+            pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$"
+            [min]="0.01"
+            [(ngModel)]="product.price"
+           
+          >
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+              <div *ngIf="price.errors.required">
+                سعر المنتج مطلوب
+              </div>
+              <div *ngIf="price.errors.pattern">
+                يجب أن يكون سعر المنتج قيمة عشرية
+              </div>
+              <div *ngIf="price.errors.min">
+                يجب أن يكون سعر المنتج أكبر من الصفر
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nameEn"> (English)  اسم المنتج</label>
+            <input
+            [ngClass]="{'is-invalid': nameEn.invalid && (nameEn.dirty || nameEn.touched)}"
+            required
+            type="text"
+            class="form-control"
+            id="nameEn"
+            name="nameEn"
+            #nameEn="ngModel"
+            [(ngModel)]="product.nameEn"
+          >
+            <div *ngIf="name.invalid && (nameEn.dirty || nameEn.touched)" class="invalid-feedback">
+              <div *ngIf="nameEn.errors.required">
+                (English) اسم المنتج مطلوب
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="oldPrice">السعر القديم</label>
+            <input
+            [ngClass]="{'is-invalid': oldPrice.invalid && (oldPrice.dirty || oldPrice.touched)}"
+            type="text"
+            class="form-control"
+            id="oldPrice"
+            name="oldPrice"
+            #oldPrice="ngModel"
+            pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$"
+            [min]="0.01"
+            [(ngModel)]="product.oldPrice"
+          >
+            <div *ngIf="oldPrice.invalid && (oldPrice.dirty || oldPrice.touched)" class="invalid-feedback">
+              <div *ngIf="oldPrice.errors.required">
+                سعر المنتج مطلوب
+              </div>
+              <div *ngIf="oldPrice.errors.pattern">
+                يجب أن يكون سعر المنتج قيمة عشرية
+              </div>
+              <div *ngIf="oldPrice.errors.min">
+                يجب أن يكون سعر المنتج أكبر من الصفر
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div>
+        <div class="form-group">
+          <br>
+          <ckeditor
+            [editor]="Editor"
+            [config]="{
+              placeholder: 'وصف المنتج...',
+              language: 'ar'
+            }"
+            [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched)}"
+            required
+            #description="ngModel"
+            [(ngModel)]="product.description"
+            name="description"
+          ></ckeditor>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="brand"> الفئة</label>
+            <select id="brand" class="form-control" name="productBrandId" [(ngModel)]="product.productBrandId" required>
+              <option
+                *ngFor="let brand of brands"
+                [selected]="product.productBrandId === brand.id"
+                [ngValue]="brand.id"
+                >{{ brand.name }}</option
+              >
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="type">النوع</label>
+            <select id="type" class="form-control" name="productTypeId" [(ngModel)]="product.productTypeId" required>
+              <option
+                *ngFor="let type of types"
+                [selected]="product.productTypeId === type.id"
+                [ngValue]="type.id"
+                >{{ type.name }}</option
+              >
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+<!--       <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="productUrl"> رابط المنتج  </label>
+            <input
+            [ngClass]="{'is-invalid': productUrl.invalid && (productUrl.dirty || productUrl.touched)}"
+            required
+            type="text"
+            class="form-control"
+            id="productUrl"
+            name="productUrl"
+            #productUrl="ngModel"
+            [(ngModel)]="product.productUrl"
+          >
+            <div *ngIf="productUrl.invalid && (productUrl.dirty || productUrl.touched)" class="invalid-feedback">
+              <div *ngIf="productUrl.errors.required">
+                 رابط المنتج مطلوب
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> -->
+
+
+
+
+
+
+
+
+
+      <div class="form-group mt-2">
+        <div class="custom-file-upload">
+          <input
+            type="file"
+            id="photos"
+            name="photos"
+            (change)="onPhotoChange($event)"
+            multiple
+            accept="image/*"
+            style="display: none;"
+          >
+          <label for="photos" class="btn btn-primary btn-sm"> 
+            <i class="fa fa-plus"></i>
+            <i class="fa fa-camera"></i>
+            إضافة الصور
+          </label>
+        </div>
+        <p *ngIf="numberOfFiles > 0">
+          عدد الملفات المحددة: {{ numberOfFiles }}</p>
+      </div>
+     
+      <div class="container dragdrop">
+        <div class="row ">
+          <div class="col-12  custom-col ">
+            <div class=" image-container " cdkDropList (cdkDropListDropped)="drop($event)" >
+              <div class="image-wrapper" *ngFor="let photo of selectedPhotos; let i = index" cdkDrag>
+                <div class="image-inner-wrapper">
+                  <img [src]="photo" class="img-fluid">
+                  <div class="image-close">
+                    <span class="fa fa-times" (click)="cancelUpload(photo)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <button [disabled]="!productForm.valid" type="submit" class="btn btn-primary btn-sm my-3">حفظ</button>
+    </form>
+  </div>

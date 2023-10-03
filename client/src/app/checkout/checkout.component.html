@@ -1,0 +1,24 @@
+<app-section-header></app-section-header> 
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <app-stepper #appStepper>
+                <cdk-step [label]="'العنوان'" [completed]="checkoutForm.get('addressForm')?.valid">
+                    <app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address>
+                </cdk-step>
+                <cdk-step [label]="'التوصيل'" [completed]="checkoutForm.get('deliveryForm')?.valid">
+                    <app-checkout-delivery [checkoutForm]="checkoutForm"></app-checkout-delivery>
+                </cdk-step>
+                <cdk-step [label]="'المراجعة'">
+                    <app-checkout-review [appStepper]="appStepper"></app-checkout-review>
+                </cdk-step>
+                <cdk-step [label]="'الدفع'" [completed]="checkoutForm.get('paymentForm')?.valid">
+                    <app-checkout-payment [checkoutForm]="checkoutForm"></app-checkout-payment>
+                </cdk-step>
+            </app-stepper>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+            <app-order-totals></app-order-totals>
+        </div>
+    </div>
+</div>

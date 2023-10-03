@@ -1,0 +1,74 @@
+<div *ngIf="order" class="container">
+ 
+    <div class="row">
+      <div class="mb-2">
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="goBack()">رجوع</button>
+      </div>
+     
+      <div class="col-md-6">
+        
+        <div class="card">
+          <div class="card-header">
+            <h4>معلومات الطلب</h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>رقم الطلب:</strong> {{ order.id }}</li>
+            <li class="list-group-item"><strong>البريد الإلكتروني للمشتري:</strong> {{ order.buyerEmail }}</li>
+            <li class="list-group-item"><strong>تاريخ الطلب:</strong> {{ order.orderDate | date }}</li>
+            <li class="list-group-item"><strong>عنوان الشحن:</strong>
+              <ul class="list-unstyled">
+                <li><strong>الاسم الأول:</strong> {{ order.shipToAddress.firstName }}</li>
+                <li><strong>الاسم الأخير:</strong> {{ order.shipToAddress.lastName }}</li>
+                <li><strong>الشارع:</strong> {{ order.shipToAddress.street }}</li>
+                <li><strong>المدينة:</strong> {{ order.shipToAddress.city }}</li>
+                <li><strong>الدولة:</strong> {{ order.shipToAddress.state }}</li>
+                <li><strong>الرمز البريدي:</strong> {{ order.shipToAddress.zipCode }}</li>
+              </ul>
+            </li>
+            <li class="list-group-item"><strong>طريقة التوصيل:</strong> {{ order.deliveryMethod }}</li>
+            <li class="list-group-item"><strong>سعر الشحن:</strong> {{ order.shippingPrice | currency }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>عناصر الطلب</h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>اسم المنتج</th>
+                  <th>supplierId</th>
+                  <th>السعر</th>
+                  <th>الكمية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of order.orderItems">
+                  <td>{{ item.productName }}</td>
+                  <td>{{ item.supplierId }}</td>
+                  <td>{{ item.price | currency }}</td>
+                  <td>{{ item.quantity }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <p><strong>المجموع الفرعي:</strong> {{ order.subtotal | currency }}</p>
+            <p><strong>طريقة الدفع:</strong> {{ order.paymentMethod }}</p>
+            <p><strong>المجموع:</strong> {{ order.total | currency }}</p>
+            <p><strong>الحالة:</strong> {{ order.status }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  

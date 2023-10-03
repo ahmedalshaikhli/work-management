@@ -1,0 +1,31 @@
+
+[
+  {
+  "Id": 1,
+  "ShortName": "طلباتي",
+  "Description": "أسرع وقت توصيل",
+  "DeliveryTime": "1-2 أيام",
+  "Price": 10
+  },
+  {
+  "Id": 2,
+  "ShortName": "DHL",
+  "Description": "احصل عليه خلال 5 أيام",
+  "DeliveryTime": "2-5 أيام",
+  "Price": 5
+  },
+  {
+  "Id": 3,
+  "ShortName": "UPS3",
+  "Description": "أبطأ ولكنه أرخص",
+  "DeliveryTime": "5-10 أيام",
+  "Price": 2
+  },
+  {
+  "Id": 4,
+  "ShortName": "مجانًا",
+  "Description": "مجانًا",
+  "DeliveryTime": "1-2 أسابيع",
+  "Price": 0
+  }
+  ]

@@ -1,0 +1,12 @@
+<header class="mb-2" *ngIf="totalCount && pageNumber && pageSize">
+    <span class="mb-2" *ngIf="totalCount > 0" class="result-count">عرض نتائج 
+        <strong>
+            {{(pageNumber -1) * pageSize + 1}} -
+            {{pageNumber * pageSize 
+                > totalCount
+                ? totalCount
+                : pageNumber * pageSize
+            }}
+        </strong> من أصل <strong>{{totalCount}}</strong> نتيجة</span>
+    <span *ngIf="totalCount === 0" class="result-count">لا توجد نتائج لهذا الفلتر</span>
+</header>

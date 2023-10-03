@@ -1,0 +1,28 @@
+<app-section-header></app-section-header> 
+<div class="container mt-3">
+    <div *ngIf="(basketService.basketSource$ | async) === null">
+        <p>لا توجد عناصر في سلة التسوق الخاصة بك</p>
+    </div>
+
+    <ng-container *ngIf="(basketService.basketSource$ | async) as basket">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <app-basket-summary
+                        (addItem)="incrementQuantity($event)"
+                        (removeItem)="removeItem($event)"
+                    ></app-basket-summary>
+                </div>
+
+                <div class="col-md-4">
+                    <app-order-totals></app-order-totals>
+                    <div class="d-grid mb-2 stuck-bottom">
+                        <a routerLink="/checkout" class="btn btn-primary py-2">
+                            المتابعة لإنهاء الشراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

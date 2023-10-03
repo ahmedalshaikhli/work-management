@@ -1,0 +1,151 @@
+
+<!-- <div class="container">
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/images/hero1.jpg" class="d-block w-100 img-responsive" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/images/hero2.jpg" class="d-block w-100 img-responsive" alt="...">
+      </div>
+  
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
+ -->
+
+<div class="container mt-3">
+  <ul class="navbar-nav ms-5 mt-3 d-block d-md-none stuck-bottom">
+    <li class="nav-item ms-4">
+        <button routerLink="/basket" class="cart-icon position-relative">
+            <i class="fa fa-shopping-cart fa-2x"></i>
+            <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-count">
+                <span class="count">{{ getCount(basket.items) }}</span>
+            </div>
+        </button>
+    </li>
+</ul>
+  <div class="row" *ngIf="types.length > 0 && brands.length > 0">
+    <div class="col-sm-12">
+      <div class="horizontal-scroll d-sm-block d-md-none">
+        <ul class="list-inline">
+          <li class="list-inline-item btn btn-outline-primary btn-sm custom-btn"
+          *ngFor="let brand of brands"
+          [class.active]="brand.id === shopParams.brandId"
+          [value]="brand.id"
+          (click)="onBrandSelected(brand.id)">{{brand.name}}
+      </li>
+        </ul>
+        <div class="scroll-indicator"></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row" *ngIf="types.length > 0 && brands.length > 0">
+    <div class="col-sm-12">
+      <div class="horizontal-scroll d-sm-block d-md-none">
+        <ul class="list-inline">
+          <li class="list-inline-item btn btn-outline-primary btn-sm custom-btn"
+          *ngFor="let type of types"
+          [class.active]="type.id === shopParams.typeId"
+          [value]="type.id"
+          (click)="onTypeSelected(type.id)">{{type.name}}
+        </li>
+        </ul>
+        <div class="scroll-indicator"></div>
+ 
+
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <div class="row" *ngIf="types.length > 0 && brands.length > 0">
+    <section class="col-lg-3 col-md-4 d-none d-md-block">
+
+      <select class="form-select " (change)="onSortSelected($event)" [(ngModel)]="shopParams.sort">
+        <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}}</option>
+      </select>
+
+      <div class="horizontal-scroll">
+        <ul class="list-group my-3">
+          <li class="list-group-item"
+            *ngFor="let brand of brands"
+            [class.active]="brand.id === shopParams.brandId"
+            [value]="brand.id"
+            (click)="onBrandSelected(brand.id)">{{brand.name}}
+          </li>
+        </ul>
+      </div> 
+
+      <hr>
+
+      <ul class="list-group my-3">
+        <li class="list-group-item"
+          *ngFor="let type of types"
+          [class.active]="type.id === shopParams.typeId"
+          [value]="type.id"
+          (click)="onTypeSelected(type.id)">{{type.name}}
+        </li>
+      </ul>
+    </section>
+
+    <section class="col-lg-9 col-md-8">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-8 d-flex align-items-center mb-3">
+            <div class="input-group">
+                <input (keyup.enter)="onSearch()" type="text" placeholder="بحث" class="form-control" #search>
+                <button (click)="onSearch()" class="btn btn-outline-secondary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-flex align-items-center ">
+          <div>
+              <select class="form-select mb-2" style="width: 73%;" (change)="onSortSelected($event)" [(ngModel)]="shopParams.sort">
+                  <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}}</option>
+              </select>
+          </div>
+      </div>
+    </div>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-4">
+        <div class="col-6 col-md-4 col-lg-4" *ngFor="let product of products">
+          <app-product-item [product]="product"></app-product-item>
+        </div>
+      </div>
+      <app-paging-header
+        [totalCount]="totalCount"
+        [pageNumber]="shopParams.pageNumber"
+        [pageSize]="shopParams.pageSize"
+      ></app-paging-header>
+      <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+        <app-pager
+          [totalCount]="totalCount"
+          [pageSize]="shopParams.pageSize"
+          [pageNumber]="shopParams.pageNumber"
+          (pageChanged)="onPageChanged($event)"
+        ></app-pager>
+      </div>
+    </section>
+    
+  </div>
+</div>

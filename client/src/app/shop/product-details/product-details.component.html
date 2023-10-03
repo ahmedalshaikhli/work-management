@@ -1,0 +1,44 @@
+<app-section-header></app-section-header> 
+<div class="container">
+    <div class="row" *ngIf="product">
+      <div class="col-md-7">
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages" style="display: inline-block;"></ngx-gallery>
+      </div>
+      <div class="col-md-5">
+        <h2>{{product.name}}</h2>
+        <p style="font-size: 2em;">{{product.price | currency}}</p>
+  
+        <h5 class="text-primary-purble" *ngIf="quantityInBasket > 0">
+          لديك {{quantityInBasket}} من هذا المنتج في سلة التسوق الخاصة بك
+
+        </h5>
+  
+        <div class="d-flex justify-content-start align-items-center">
+          <i 
+            (click)="decrementQuantity()"
+            class="fa fa-minus-circle page-link me-2" 
+            style="cursor: pointer; font-size: 2em;"></i>
+          <span class="font-weight-bold" style="font-size: 1.5em;">
+            {{quantity}}
+          </span>
+          <i 
+            (click)="incrementQuantity()"
+            class="fa fa-plus-circle page-link ms-2" 
+            style="cursor: pointer; font-size: 2em;"></i>
+          <button 
+            class="btn btn-outline-primary ms-4"
+            (click)="updateBasket()"
+            [disabled]="quantity === quantityInBasket"
+          >
+            {{buttonText}}
+          </button>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <h4>الوصف</h4>
+            <div class="product-description" [innerHTML]="productDescription"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

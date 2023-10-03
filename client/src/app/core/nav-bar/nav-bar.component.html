@@ -1,0 +1,184 @@
+<nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand"  href="#">
+      
+      <img src="../../../assets/img/iraq-logo.PNG" alt="Brand Logo" class="img-fluid logo">
+    </a>
+ 
+
+      <button class="navbar-toggler collapsed" type="button" onclick="toggleOffcanvas()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="navbar-collapse collapse" id="navbarColor01" >
+
+
+
+        <ng-container *ngIf="accountService.currentUser$ | async as user">
+          <ul class="navbar-nav me-start">
+            <li class="nav-item">
+                <a routerLink="/basket" class="position-relative">
+                    <i class="fa fa-shopping-cart fa-2x me-5 text-light"></i>
+                    <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
+                        {{ getCount(basket.items) }}
+                    </div>
+                </a>
+            </li>
+        </ul>
+ 
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="(isSupplier$ | async)" routerLink="/supplier" routerLinkActive="active">المورد</a>
+          </li>
+             <li class="nav-item">
+                  <a class="nav-link" *ngIf="(isAdmin$ | async)"  routerLink="/admin" routerLinkActive="active">لوحة الإدارة</a>
+              </li> 
+         
+     
+          </ul>
+
+
+
+        </ng-container>
+
+
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          الفئات
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                          <li *ngFor="let brand of brands" [class.active]="brand.id === shopParams.brandId" (click)="onBrandSelected(brand.id)">
+                              <a class="dropdown-item">{{brand.name}}</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/account/login"><span>  تسجيل الدخول </span> </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/account/register"><span> إنشاء حساب </span> </a>
+                      
+                  </li>
+              </ul>
+          </ng-container>
+
+      
+          <ng-container *ngIf="accountService.currentUser$ | async as user">
+              <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+                  <a dropdownToggle class="dropdown-toggle text-light">
+                      <strong>مرحبًا {{user.displayName}}</strong>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                      <li class="py-1">
+                          <a routerLink="/basket" class="dropdown-item">
+                              <i class="fa fa-shopping-cart me-3"></i> عرض السلة
+                          </a>
+                      </li>
+                      <li class="py-1">
+                          <a routerLink="/orders" class="dropdown-item">
+                              <i class="fa fa-history me-3"></i> عرض الطلبات
+                          </a>
+                      </li>
+                      <li class="py-1">
+                          <a routerLink="/user-settings" class="dropdown-item">
+                              <i class="fa fa-cog me-3"></i> الإعدادات
+                          </a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li class="py-1">
+                          <a (click)="accountService.logout()" class="dropdown-item">
+                            <i class="material-icons"> login</i><span>  تسجيل الخروج </span>  
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </ng-container>
+      </div>
+  </div>
+</nav>
+
+<!-- Off-canvas content -->
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+  <div>
+    <button type="button" class="btn-close text-reset  float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-header d-flex flex-column align-items-center justify-content-center">
+
+    
+    <ng-container *ngIf="accountService.currentUser$ | async as user">
+        <div class="d-flex align-items-center mb-2">
+            <img class="user-avatar" [src]="'https://iraqemart.com/' + userProfilePhoto" alt="User Profile Photo">
+          </div>
+      <h5 class="text-center mt-3"> مرحباً {{ user.displayName }}  </h5>
+      <a (click)="accountService.logout()" data-bs-dismiss="offcanvas" class="text-center nav-link">
+        تسجيل الخروج  
+    </a>
+    </ng-container>
+    <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/login" data-bs-dismiss="offcanvas">تسجيل الدخول</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account/register" data-bs-dismiss="offcanvas">إنشاء حساب</a>
+        </li>
+      </ul>
+    </ng-container>
+    
+
+
+  <hr >
+  <div class="offcanvas-body">
+      <ul class="navbar-nav offcanvas-nav" >
+  
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shop" data-bs-dismiss="offcanvas" routerLinkActive="active">
+                <i class="fa  fa-building-o fa-1x me-3"  style="font-size: 22px; vertical-align: middle;"></i> السوق</a>
+        
+        </li>
+          <li class="nav-item">
+            <a routerLink="/basket" data-bs-dismiss="offcanvas" class="position-relative nav-link">
+                <i class="fa  fa-shopping-cart fa-1x me-3"  style="font-size: 22px; vertical-align: middle;"></i> 
+                <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no-canvas">
+                    {{ getCount(basket.items) }}
+                </div>
+                عرض السلة
+            </a>
+        </li>
+
+        <ng-container *ngIf="accountService.currentUser$ | async as user">
+        <li class="nav-item">
+            <a routerLink="/orders" class="nav-link" data-bs-dismiss="offcanvas">
+                <i class="fa fa-list-alt fa-1x me-3"  style="font-size: 22px; vertical-align: middle;"></i> عرض الطلبات
+            </a>
+        </li><!-- <i class="fa fa-user fa-1x text-light" style="font-size: 20px;"></i> -->
+
+        
+            <li class="nav-item">
+                <a routerLink="/user-settings" class="nav-link" data-bs-dismiss="offcanvas">
+                    <i class="fa fa-cog fa-1x me-3"  style="font-size: 22px; vertical-align: middle;"></i> الحساب
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="(isAdmin$ | async)" routerLink="/admin" routerLinkActive="active" data-bs-dismiss="offcanvas">
+                  <i class="fa  fa-tachometer fa-1x me-3"  style="font-size: 22px; vertical-align: middle;"></i>لوحة الإدارة</a>
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="(isSupplier$ | async)"   routerLink="/supplier" routerLinkActive="active"> المورد</a>
+          </li>
+    </ng-container>
+
+      </ul>
+
+  </div>
+</div>

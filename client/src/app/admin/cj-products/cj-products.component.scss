@@ -1,0 +1,24 @@
+.product-img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border: 2px solid #ddd; /* Border style and color */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+    border-radius: 5px; /* Rounded border corners */
+  }
+  
+  .table td {
+    vertical-align: middle; /* Center the content vertically */
+  }
+  
+  .table thead th {
+    background-color: #f8f9fa; /* Table header background color */
+    color: #333; /* Table header text color */
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa; /* Alternating row background color */
+  }
+  
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: #fff; /* Alternating row background color */
+  }

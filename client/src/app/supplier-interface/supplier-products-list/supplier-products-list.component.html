@@ -1,0 +1,92 @@
+ <div class="container" *ngIf="products">
+
+<!--   <div class="row">
+    <div class="col-12 col-sm-12 col-md-8 d-flex align-items-center mb-3">
+        <div class="input-group">
+            <input (keyup.enter)="onSearch()" type="text" placeholder="بحث" class="form-control" #search>
+            <button (click)="onSearch()" class="btn btn-outline-secondary">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</div> -->
+    <div class="row">
+        <div class="col-6">
+            <a routerLink="create-product" class="btn btn-primary btn-sm">إضافة منتج</a>
+          </div>
+      <div class="col-6 text-end">
+        <app-paging-header
+          [totalCount]="totalCount"
+          [pageSize]="this.shopParams.pageSize"
+          [pageNumber]="this.shopParams.pageNumber"
+        ></app-paging-header>
+      </div>
+    </div>
+  
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>المنتج</th>
+                <th>الاسم</th>
+                <th>السعر</th>
+                <th>المنشئ</th> <!-- New TH for Creator Name -->
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>
+                  <img src="{{ product.pictureUrl || '/assets/images/placeholder.png' }}" alt="{{ product.name }}"
+                    class="img-fluid product-img">
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price | currency }}</td>
+                <td>{{ product.creatorName }}</td> <!-- New TD for Creator Name -->
+                <td>
+            
+                  <i [routerLink]="['edit', product.id]"  class="fa fa-pencil" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>
+              </td>
+              <td>
+            
+  
+                <i (click)="deleteProduct(product.id)"  class="fa fa-trash" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>
+      
+            
+            </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+<!--     <div class="col-12">
+      <div *ngIf="totalCount > 0">
+        <app-pager
+          [pageSize]="shopParams.pageSize"
+          [pageNumber]="shopParams.pageNumber"
+          [totalCount]="totalCount"
+          (pageChanged)="onPageChanged($event)"
+        ></app-pager>
+      </div>
+    </div> -->
+  </div>
+
+<!--  <div class="container">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-4">
+      <div class="card">
+        <img [src]="product.pictureUrl" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text"><small class="text-muted">Price: {{ product.price }}</small></p>
+          <a href="#" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

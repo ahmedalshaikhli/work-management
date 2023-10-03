@@ -1,0 +1,18 @@
+.loader {
+    position: absolute;
+    width: auto;
+    top: 20px;
+    right: 40px;
+    margin-top: 0;
+}
+
+.form-floating {
+    position: relative;
+  }
+  
+
+
+  .form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #d3d3d3 ;
+
+}

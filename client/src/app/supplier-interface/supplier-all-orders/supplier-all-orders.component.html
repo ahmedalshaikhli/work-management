@@ -1,0 +1,54 @@
+<div class="container ">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <div class="input-group mb-3">
+          <input type="date" class="form-control" [(ngModel)]="searchTerm" placeholder="البحث حسب الاسم المعروض">
+          <button class="btn btn-outline-secondary" type="button" (click)="searchOrders()"> <i class="fa fa-search"></i></button>
+          <button class="btn btn-outline-secondary" type="button" (click)="resetSearch()"><i class="fa fa-trash"></i></button>
+        </div>
+  
+      
+      </div>
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th class="d-none d-sm-table-cell">الرقم التعريفي</th>
+                <th>بريد المشتري</th>
+                <th>تاريخ الطلب</th>
+                <th class="d-none d-sm-table-cell">طريقة التوصيل</th>
+                <th class="d-none d-sm-table-cell">الإجمالي الفرعي</th>
+                <th class="d-none d-sm-table-cell">سعر الشحن</th>
+                <th class="d-none d-sm-table-cell">الإجمالي</th>
+                <th class="d-none d-sm-table-cell">طريقة الدفع</th>
+                <th class="d-none d-sm-table-cell">الحالة</th>
+                <th> </th>
+                </tr>
+              
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders">
+                <td class="d-none d-sm-table-cell">{{ order.id }}</td>
+                <td>{{ order.buyerEmail }}</td>
+                <td>{{ order.orderDate | date: 'short' }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.deliveryMethod }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.subtotal | currency:'USD':'symbol-narrow' }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.shippingPrice | currency:'USD':'symbol-narrow' }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.total | currency:'USD':'symbol-narrow' }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.paymentMethod }}</td>
+                <td class="d-none d-sm-table-cell">{{ order.status }}</td>
+                <td>
+                  <i [routerLink]="['details', order.buyerEmail]" class="fa fa-eye" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>   
+                 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-12">
+      <!--    <app-pagination [pageIndex]="pageIndex" [pageSize]="pageSize" [totalCount]="totalCount" (pageChanged)="onPageChanged($event)"></app-pagination> -->
+     </div>
+    </div>
+  </div>

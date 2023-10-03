@@ -1,0 +1,76 @@
+<div class="container mt-3">
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3 text-center">
+      <div class="image-upload">
+        <img [src]="preview ? preview : 'https://iraqemart.com/' + user.userProfilePhoto" 
+             alt="User Profile Photo" 
+             class="rounded-circle img-thumbnail" 
+             style="width: 150px; height: 150px;">
+        <div>
+          <input style="display: none;" id="profileImage" type="file" (change)="onSelectFile($event)">
+          <label for="profileImage" class="btn btn-primary mt-2">تحميل صورة</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">البريد الالكتروني</label>
+      <input formControlName="email" type="email" class="form-control" id="email" readonly />
+    </div>
+    
+    <div class="mb-3">
+      <label for="displayName" class="form-label">الاسم</label>
+      <input formControlName="displayName" type="text" class="form-control" id="displayName" />
+    </div>
+    
+    <div formGroupName="address">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">الاسم الاول</label>
+        <input formControlName="firstName" type="text" class="form-control" id="firstName" />
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">اللقب</label>
+        <input formControlName="lastName" type="text" class="form-control" id="lastName" />
+      </div>
+      <div class="mb-3">
+        <label for="state" class="form-label">البلد</label>
+        <input formControlName="state" type="text" class="form-control" id="state" readonly />
+      </div>
+      <div class="mb-3">
+        <label for="city" class="form-label">المدينة</label>
+        <select formControlName="city" class="form-control" id="city">
+          <option value="">الرجاء اختيار المدينة</option>
+          <option value="بغداد">بغداد</option>
+          <option value="البصرة">البصرة</option>
+          <option value="النجف">النجف</option>
+          <option value="كربلاء">كربلاء</option>
+          <option value="الموصل">الموصل</option>
+          <option value="أربيل">أربيل</option>
+          <option value="كركوك">كركوك</option>
+          <option value="الفلوجة">الفلوجة</option>
+          <option value="الرمادي">الرمادي</option>
+          <option value="السليمانية">السليمانية</option>
+          <option value="دهوك">دهوك</option>
+          <option value="سامراء">سامراء</option>
+          <option value="العمارة">العمارة</option>
+          <option value="الناصرية">الناصرية</option>
+          <option value="الحلة">الحلة</option>
+          <option value="الديوانية">الديوانية</option>
+          <!-- Add more cities as needed -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="street" class="form-label">الشارع</label>
+        <input formControlName="street" type="text" class="form-control" id="street" />
+      </div>
+      <div class="mb-3">
+        <label for="zipcode" class="form-label">رقم الهاتف</label>
+        <input formControlName="zipcode" type="text" class="form-control" id="zipcode" />
+      </div>
+    </div>
+    
+    <div class="mb-3 text-center">
+      <button class="btn btn-primary" type="submit">حفظ</button>
+    </div>
+  </form>
+</div>

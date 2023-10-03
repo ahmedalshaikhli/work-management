@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col-12 col-md-3">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="البحث   ">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchProducts()"> <i class="fa fa-search"></i></button>
+        <button class="btn btn-outline-secondary" type="button" (click)="resetSearch()"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="col-12">
+
+      
+    <!--   <h2>CJ Products</h2> -->
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>PID</th>
+              <!-- <th>Product Name</th> -->
+              <th>صورة المنتج</th>
+              <!-- <th>SKU</th> -->
+              <th>اسم المنتج</th>
+              <!-- <th>Weight</th>
+              <th>Average Weight</th>
+              <th>Type</th> -->
+              <!-- <th>Unit</th> -->
+              <th>السعر </th>
+              <!-- <th>Category ID</th> -->
+              
+              <!-- <th>Source</th> -->
+              <!-- <th>Remark</th>
+              <th>Create Time</th> -->
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+
+              <td>{{product.pid}}</td> 
+              <td>
+                <img src="{{product.productImage}}" alt="{{product.productName}}" class="img-fluid product-img">
+              </td>
+        
+              <td>{{product.productNameEn}}</td>
+           
+           
+       
+              <td>{{product.sellPrice + "$"}}</td>
+             
+              <!-- <td>{{product.categoryName}}</td> -->
+      
+              <td>
+                <i [routerLink]="['details', product.pid]" class="fa fa-pencil" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>
+
+              </td>
+              <td>
+                <i (click)="saveProductFromExternal(product.pid)" class="fa fa-plus" style="font-size: 1.4em; cursor: pointer; color: darkgray;"></i>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button (click)="previousPage()" [disabled]="pageNum === 1" class="btn btn-secondary">Previous</button>
+        <button (click)="nextPage()" [disabled]="pageNum === totalPages" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

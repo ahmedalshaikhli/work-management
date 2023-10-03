@@ -1,0 +1,197 @@
+ .cart-no {
+    position: absolute;
+    min-height: 25px;
+    min-width: 25px;
+    border-radius: 50%;
+    color: white;
+    /* color: #967BB6; */
+    background:#BF9553;
+    text-align: center;
+    top: -12px;
+    right: -10px;
+}
+.cart-no-small-1{
+  position: absolute;
+  min-height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  color: white;
+  background: #BF9553;
+  font-size: 13px;
+  text-align: center;
+  top: -13px;
+  left: 2px;
+}
+.cart-no-nav-small{
+  position: absolute;
+  min-height: 25px;
+  min-width: 25px;
+  border-radius: 50%;
+  color: white;
+  /* color: #967BB6; */
+  background:#BF9553;
+  text-align: center;
+  top: -12px;
+  right: -10px;
+}
+
+
+
+.cart-no-canvas{
+  position: absolute;
+  min-height: 10px;
+  min-width: 21px;
+  border-radius: 50%;
+  color: white;
+  background: #BF9553;
+  text-align: center;
+  top: -4px;
+  right: -4px;
+}
+.btn-secondary{
+    background:#BF9553;
+    border: #e9cb9c;
+}
+/* a {
+    text-decoration: none;
+    color: #343a40;
+
+    &.active {
+        color: orange
+    }
+}
+
+.logo {
+    cursor: pointer;
+} */
+ 
+
+
+/* .navbar-brand {
+  
+    color: white;
+} 
+
+a {
+    text-decoration: none;
+    color: #fafafa;
+
+    
+
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: rgb(204 196 196 / 90%);
+} */
+
+
+
+  /* Additional styles for off-canvas navigation */
+  .offcanvas-start {
+    width: 70%;
+  }
+
+  .offcanvas-collapse {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -100%;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .offcanvas-collapse.open {
+    right: 0;
+  }
+  
+  .navbar-expand-lg .navbar-nav .nav-link {
+      color: white;
+  }
+  
+  .navbar-toggler {
+    color: white;
+    border-color: white;
+  }
+  
+  .navbar-toggler .navbar-toggler-icon {
+    color: white;
+  }
+
+  .navbar-nav .nav-link,
+  .offcanvas-nav .nav-link {
+    color: black;
+  }
+  
+  .navbar-nav .nav-link.active,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link:hover,
+  .offcanvas-nav .nav-link.active,
+  .offcanvas-nav .nav-link:focus,
+  .offcanvas-nav .nav-link:hover {
+    font-weight: bold;
+  }
+  
+  /* Custom CSS for hamburger toggle button */
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='%23ffffff'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+  
+  
+/* Add the following CSS to change the navbar background color */
+.navbar {
+  background-color: #522888;
+  
+}
+
+
+
+hr {
+  margin: 0rem 0;
+  color: inherit;
+  border: 0;
+  border-top: 1px solid;
+  opacity: .25;
+}
+
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.logo {
+  width: 150px;
+  height: auto; /* This will keep the aspect ratio of the image */
+}
+
+@media (max-width: 767.98px) { 
+  .stuck-bottom {
+    
+      position: fixed;
+      bottom: 200px;
+      left: 0;
+      right: -46px;
+      z-index: 1030;
+  
+  }
+  .cart-icon {
+    background-color: rgba(128, 0, 128, 0.5); /* Purple but semi-transparent */
+    border: 2px solid#522888; /* Dark purple border */
+    border-radius: 50%; /* This will make the icon background circular */
+    width: 50px;  /* Adjust the width and height to suit your needs */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+  width: 120px;
+  height: auto; /* This will keep the aspect ratio of the image */
+}
+}
+
+

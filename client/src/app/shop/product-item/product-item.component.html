@@ -1,0 +1,34 @@
+<article *ngIf="product" class="block product no-border z-depth-2-top z-depth-2--hover">
+  <div class="block-image">
+    <div class="d-flex justify-content-center  ">
+      <a [routerLink]="'/shop/' + product.id" aria-label="'View ' + product.name">
+        <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-center img-fluid custom-image-height">
+      </a>
+    </div>
+<!--     <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span> -->
+  </div>
+  <div class="block-body text-center">
+    <div class="responsive-product-title">
+      <a class="custom-font-size" [routerLink]="'/shop/' + product.id" aria-label="'View ' + product.name">
+        {{product.name | slice:0:15}}
+      </a>
+    </div>
+    <p class="product-description mb-2">
+     السعر: {{product.price | currency}}
+    </p>
+    <div class="product-buttons ">
+      <div class="row align-items-center">
+        <div class="col-6 text-start">
+          <a href="javascript:void(0)" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Share" (click)="openShareDialog(product)" aria-label="'Share ' + product.name">
+            <i class="fa fa-share"></i>
+          </a>
+        </div>
+        <div class="col-6 text-end">
+          <button type="button" (click)="addItemToBasket()" class="btn btn-block btn-primary btn-circle btn-icon-left" aria-label="'Add ' + product.name + ' to cart'">
+            <i class="fa fa-shopping-cart"></i> 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

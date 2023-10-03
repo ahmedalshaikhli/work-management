@@ -1,0 +1,112 @@
+.list-unstyled {
+    position: relative;
+    ;/* Adjust the border color as needed */
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2), -0px 0px 5px rgba(0, 0, 0, 0.1);
+   /*  padding-left: 20px;  *//* Adjust the left padding as needed */
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  .list-unstyled:hover {
+   
+    color: #ffffff;
+  }
+  
+  .list-unstyled li {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+   
+  }
+ 
+  .list-unstyled li a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .list-unstyled li i {
+    margin-right: 10px; /* Adjust the margin as needed */
+    font-size: 20px; /* Adjust the font size as needed */
+  }
+  
+  .list-unstyled li span {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+/*   .list-unstyled li a:hover {
+ 
+    color: #ffffff;
+  } */
+  .list-unstyled li:hover {
+  
+    background-color: #bf9553;
+  
+   
+    font-weight: bold;
+  }
+  .list-unstyled li {
+    margin-bottom: 10px;
+  }
+  
+  .list-unstyled li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+/*   .list-unstyled li:hover a {
+    color: white;
+  } */
+
+  .li-with-border {
+    border-bottom: 1px solid #dcdcdc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-unstyled li .menu-text {
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-right: 10px;
+    color: #4E4E4E;
+  }
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #4E4E4E;
+  }
+  .full-height {
+    height: 100vh;
+
+  }
+
+  .small-button {
+   
+    font-size: 14px;
+    margin: 8px;
+  }
+
+  .menu-container {
+  padding: 10px;
+ 
+    border-bottom: 1px solid #dcdcdc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .gray-icon {
+    color: #4E4E4E;
+  }
+  
+  .btn:focus .gray-icon {
+    color: #FFFFFF;
+  }
+  
+  .btn:active .gray-icon {
+    color: #FFFFFF;
+  }
+
+  .btn.custom-button:hover {
+    color: #FFFFFF;
+  }
+  
+  .btn.custom-button:hover .gray-icon {
+    color: #FFFFFF;
+  }

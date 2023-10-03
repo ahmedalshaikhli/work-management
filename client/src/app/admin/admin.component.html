@@ -1,0 +1,88 @@
+<div class="container-fluid ">
+  
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-4 d-none d-sm-block">
+   
+      <nav> 
+     
+        <ul class="list-unstyled  full-height">
+          <li class=  "li-with-border">
+            
+            <a>
+            
+              <h3 class="mt-3 ms-2 font-weight-bold"> القائمة</h3>
+              
+            </a>
+           
+          </li>
+    
+          <li class="">
+            <a routerLink="dashboard" routerLinkActive="active">
+              <i class="fa fa-tachometer gray-icon" aria-hidden="true"></i>
+              <span class="menu-text"> الإحصاءات</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="all-orders" routerLinkActive="active">
+              <i class="fa fa-list-alt gray-icon" aria-hidden="true"></i>
+              <span class="menu-text">الطلبات</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="products-list" routerLinkActive="active">
+              <i class="fa fa-building gray-icon" aria-hidden="true"></i>
+              <span class="menu-text">المنتجات</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="users-list" routerLinkActive="active">
+              <i class="fa fa-address-book-o gray-icon" aria-hidden="true"></i>
+              <span class="menu-text">المستخدمون</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="products-CJ" routerLinkActive="active">
+              <i class="fa fa-external-link-square gray-icon" aria-hidden="true"></i>
+              <span class="menu-text">products-CJ</span>
+            </a>
+          </li> 
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-10 col-md-9 col-sm-8">
+      <div class="row pt-3 pb-3 ">
+        <div class=" text-center">
+         
+            <h1 class="text-shadow" >لوحة الإدارة</h1>
+           
+        <div class="menu-container d-sm-none   ">
+            <button type="button" class="btn btn-outline-primary small-button custom-button" routerLink="dashboard" routerLinkActive="active">
+              <i class="fa fa-tachometer gray-icon" aria-hidden="true"></i> الإحصاءات
+            </button>
+            <button type="button" class="btn btn-outline-primary small-button custom-button" routerLink="all-orders" routerLinkActive="active">
+              <i class="fa fa-list-alt gray-icon" aria-hidden="true"></i> الطلبات
+            </button>
+            <button type="button" class="btn btn-outline-primary small-button custom-button" routerLink="products-list" routerLinkActive="active">
+              <i class="fa fa-building gray-icon" aria-hidden="true"></i> المنتجات     
+            </button>
+            <button type="button" class="btn btn-outline-primary small-button custom-button" routerLink="users-list" routerLinkActive="active">
+              <i class="fa fa-address-book-o gray-icon" aria-hidden="true"></i> المستخدمون
+            </button>
+            <button type="button" class="btn btn-outline-primary small-button custom-button" routerLink="products-CJ" routerLinkActive="active">
+              <i class="fa fa-external-link-square gray-icon " aria-hidden="true"></i>
+              <span class="menu-text"> products-CJ</span>
+            </button>
+            
+          </div>
+          
+        </div> 
+        <div class="menu-container ">
+ <router-outlet></router-outlet>
+        </div>
+       
+      </div>
+      
+      
+    </div>
+  </div>
+</div>

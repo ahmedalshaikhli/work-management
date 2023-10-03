@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 10px;">
+  <div class="card mb-4">
+      <div class="card-header text-center">
+          <img class="rounded-circle user-avatar" 
+               [src]="'https://iraqemart.com/' + user.userProfilePhoto" 
+               alt="User Profile Photo"
+               style="width: 150px; height: 150px;">
+      </div>
+      <div class="card-body">
+          <ng-container *ngIf="user">
+              <div class="text-center mb-3">
+                  <h4>{{ user.displayName }}</h4>
+                  <small class="text-muted">{{ user.email }}</small>
+              </div>
+              <hr />
+              <ng-container *ngIf="user.address">
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          <strong>الاسم الاول:</strong> {{ user.address.firstName }}
+                      </li>
+                      <li class="list-group-item">
+                          <strong>اللقب:</strong> {{ user.address.lastName }}
+                      </li>
+                      <li class="list-group-item">
+                          <strong>الشارع:</strong> {{ user.address.street }}
+                      </li>
+                      <li class="list-group-item">
+                          <strong>المدينة:</strong> {{ user.address.city }}
+                      </li>
+                      <li class="list-group-item">
+                          <strong>البلد:</strong> {{ user.address.state }}
+                      </li>
+                      <li class="list-group-item">
+                          <strong>رقم الهاتف:</strong> {{ user.address.zipcode }}
+                      </li>
+                  </ul>
+              </ng-container>
+          </ng-container>
+      </div>
+      <div class="card-footer text-center">
+          <button class="btn btn-secondary mb-2" routerLink="edit-user" routerLinkActive="active">تحديث البيانات </button>
+          <button class="btn btn-danger mb-2" (click)="deleteAccount()">الغاء الحساب </button>
+      </div>
+  </div>
+</div>

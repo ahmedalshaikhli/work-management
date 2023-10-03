@@ -1,0 +1,10 @@
+.result-count {
+    font-size: 12px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+    .result-count {
+        font-size: 10px;
+    }
+}

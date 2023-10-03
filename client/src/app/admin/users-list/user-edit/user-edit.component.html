@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>تحرير المستخدم</h1>
+  <form (ngSubmit)="onSave()" #userForm="ngForm">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="displayName" class="form-label">اسم :</label>
+          <input [(ngModel)]="user.displayName" name="displayName" id="displayName" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="email" class="form-label">البريد الإلكتروني:</label>
+          <input [(ngModel)]="user.email" name="email" id="email" type="email" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressFirstName" class="form-label">الاسم الأول :</label>
+          <input [ngModel]="user.address?.firstName" name="addressFirstName" id="addressFirstName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressLastName" class="form-label">الاسم الأخير :</label>
+          <input [ngModel]="user.address?.lastName" name="addressLastName" id="addressLastName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressStreet" class="form-label">شارع :</label>
+          <input [ngModel]="user.address?.street" name="addressStreet" id="addressStreet" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressCity" class="form-label">مدينة :</label>
+          <input [ngModel]="user.address?.city" name="addressCity" id="addressCity" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressState" class="form-label">منطقة :</label>
+          <input [ngModel]="user.address?.state" name="addressState" id="addressState" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="addressZipcode" class="form-label">الرمز البريدي :</label>
+          <input [ngModel]="user.address?.zipcode" name="addressZipcode" id="addressZipcode" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mb-3">
+            <label class="form-label">الأدوار:</label>
+            <div *ngIf="user && user.rolesCheckbox">
+              <div *ngFor="let role of roles; index as i">
+                <input type="checkbox" id="{{role}}" [(ngModel)]="user.rolesCheckbox[i]" name="{{role}}">
+                <label for="{{role}}"> {{role}} </label>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">حفظ</button>
+     <button type="button" class="btn btn-secondary" (click)="goBack()">العودة</button> 
+    </div>
+  </form>
+</div>

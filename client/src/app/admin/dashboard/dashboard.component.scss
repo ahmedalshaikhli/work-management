@@ -1,0 +1,32 @@
+.card {
+    margin-bottom: 10px;
+    border-radius: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+    margin-top: -1px;
+    padding-top: 1rem;
+  }
+
+  
+.icon.icon-warning {
+    color: #ff9800;
+}
+
+.icon.icon-rose {
+    color: #e91e63;
+}
+.icon.icon-success {
+    color: #4caf50;
+}
+.icon.icon-info {
+    color: #00bcd4;
+}
+
+@media (max-width: 767px) {
+    .card-text {
+      font-size: 14px;
+    }
+  }

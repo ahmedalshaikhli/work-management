@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <div><i class="fa fa-check-circle fa-5x" style="color: green;"></i></div>
+    <h2>شكرًا لك. تم تأكيد طلبك</h2>
+    <p class="mb-4">  
+        سيتم توصيل طلبك في اليوم المحدد  </p>
+    <button *ngIf="order" routerLink="/orders/{{order.id}}" class="btn btn-outline-success">
+        عرض طلبك
+    </button>
+    <button *ngIf="!order" routerLink="/orders" class="btn btn-outline-success mb-3">
+        عرض طلباتك
+    </button>
+</div>

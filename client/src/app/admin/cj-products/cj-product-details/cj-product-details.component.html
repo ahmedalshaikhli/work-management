@@ -1,0 +1,89 @@
+<!-- <div *ngIf="product">
+    <h2>Product Details</h2>
+    <div>
+      <h3>{{ product.productNameEn }}</h3>
+      <p>Product ID: {{ product.pid }}</p>
+      <p>Product SKU: {{ product.productSku }}</p>
+      <p>Product Image: <img src="{{ product.productImage }}" alt="{{ product.productNameEn }}" class="img-thumbnail" style="width: 100px;"></p>
+      <p>Product Weight: {{ product.productWeight }}</p>
+      <p>Product Unit: {{ product.productUnit }}</p>
+      <p>Product Type: {{ product.productType }}</p>
+      <p>Category ID: {{ product.categoryId }}</p>
+      <p>Category Name: {{ product.categoryName }}</p>
+      <p>Entry Code: {{ product.entryCode }}</p>
+      <p>Entry Name: {{ product.entryName }}</p>
+      <p>Entry Name (EN): {{ product.entryNameEn }}</p>
+      <p>Material Name: {{ product.materialName }}</p>
+      <p>Material Name (EN): {{ product.materialNameEn }}</p>
+      <p>Material Key: {{ product.materialKey }}</p>
+      <p>Packing Weight: {{ product.packingWeight }}</p>
+      <p>Sell Price: {{ product.sellPrice }}</p>
+      <p>Description: {{ product.description }}</p>
+      <p>Suggested Sell Price: {{ product.suggestSellPrice }}</p>
+      <p>Status: {{ product.status }}</p>
+      <p>Supplier Name: {{ product.supplierName }}</p>
+      
+      <h4>Variants</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Variant Name (EN)</th>
+            <th>Variant SKU</th>
+            <th>Variant Key</th>
+            <th>Variant Length</th>
+            <th>Variant Width</th>
+            <th>Variant Height</th>
+            <th>Variant Volume</th>
+            <th>Variant Weight</th>
+            <th>Variant Sell Price</th>
+            <th>Create Time</th>
+            <th>Variant Standard</th>
+            <th>Variant Suggested Sell Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let variant of product.variants">
+            <td>{{ variant.variantNameEn }}</td>
+            <td>{{ variant.variantSku }}</td>
+            <td>{{ variant.variantKey }}</td>
+            <td>{{ variant.variantLength }}</td>
+            <td>{{ variant.variantWidth }}</td>
+            <td>{{ variant.variantHeight }}</td>
+            <td>{{ variant.variantVolume }}</td>
+            <td>{{ variant.variantWeight }}</td>
+            <td>{{ variant.variantSellPrice }}</td>
+            <td>{{ variant.createTime }}</td>
+            <td>{{ variant.variantStandard }}</td>
+            <td>{{ variant.variantSugSellPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+
+
+  <div class="container">
+    <button (click)="goBack()" class="btn btn-secondary">Back</button>
+    <div class="row" *ngIf="product">
+      <div class="col-md-6">
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"style="display: inline-block;"></ngx-gallery>
+      </div>
+      <div class="col-md-6">
+        <h2>{{product.productNameEn}}</h2>
+        <p style="font-size: 2em;">{{product.sellPrice | currency}}</p>
+  
+ <!--        <h5 class="text-primary-purble" *ngIf="quantityInBasket > 0">
+          لديك {{quantityInBasket}} من هذا المنتج في سلة التسوق الخاصة بك
+
+        </h5> -->
+  
+
+        <div class="row mt-3">
+         <div class="col">
+            <h4>الوصف</h4>
+            <div [innerHTML]="product.description"></div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
